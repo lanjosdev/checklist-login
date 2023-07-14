@@ -1,0 +1,81 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  // max-width: fit-content;
+}
+
+a {
+  // color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+}
+
+ul, ol, li {
+  list-style: none;
+}
+/* RESET */
+
+
+/* GLOBAL */
+$bg-app: #15171a;
+$text-app: #fff;
+$preto: #000;
+$claro: #F0F8FF;
+$azul: #3366ff;
+$gray: #6e6e6ed5;
+$darkgray: #323238;
+
+html {
+  scroll-behavior: smooth;
+  
+  font-size: 62.5%; /* Pra usar rem divisivel por10*/
+  @media screen and (max-width: 480px) {
+    font-size: 55%;
+  }
+}
+
+body {
+  font-size: 1.6rem; /* Pra garantir q o padrao seja 16px no navegador*/
+  width: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+body, input, textarea, button {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+/* GLOBAL */
+
+
+/* GRID LAYOUT */
+.spacing-section {
+  padding: 60px 20px;
+  
+  @media screen and (max-width: 480px) {
+    padding: 40px 15px;
+  }
+}
+// OU usar mixin dentro das propriedades do elemento
+@mixin spacing-section() {
+  padding: 60px 20px;
+  
+  @media screen and (max-width: 480px) {
+    padding: 40px 15px;
+  }
+}
+
+.grid {
+  width: 100%;
+  max-width: 1140px;
+
+  margin: 0 auto;
+}
+/* GRID LAYOUT */

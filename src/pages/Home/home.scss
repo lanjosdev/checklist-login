@@ -1,0 +1,62 @@
+@import '../../styles/global.scss';
+
+.home-container {
+    @include spacing-section();
+    background-color: $bg-app;
+    color: $text-app;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+
+    .grid {
+        max-width: 500px;
+    }
+
+    h1 {
+        font-size: 4.8rem;
+        margin-bottom: 1rem;
+    }
+
+    p {
+        margin-bottom: 3rem;
+    }
+
+    form.login {
+        background-color: $darkgray;
+        padding: 4rem;
+        border-radius: 10px;
+
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        input:not(#showSenha), button {
+            border: none;
+            height: 3rem;
+            border-radius: 5px;
+            padding: 0 .9rem;
+            font-size: 1.5rem;
+        }
+
+        .show-senha {
+            margin-bottom: 1.5rem;
+        }
+
+        button {
+            background-color: $azul;
+            color: $text-app;
+            // font-size: 1.6rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        text-align: center;
+
+        h1 {
+            font-size: 3.6rem;
+        }                
+    }
+}
