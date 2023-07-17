@@ -32,8 +32,9 @@ $text-app: #fff;
 $preto: #000;
 $claro: #F0F8FF;
 $azul: #3366ff;
-$gray: #6e6e6ed5;
-$darkgray: #323238;
+$gray-1: #b4b8bb;
+$gray-2: #6e6e6ed5;
+$gray-3: #323238;
 
 html {
   scroll-behavior: smooth;
@@ -48,6 +49,7 @@ body {
   font-size: 1.6rem; /* Pra garantir q o padrao seja 16px no navegador*/
   width: 100%;
   -webkit-font-smoothing: antialiased;
+  background-color: $bg-app;
 }
 body, input, textarea, button {
   font-family: Verdana, Geneva, Tahoma, sans-serif;

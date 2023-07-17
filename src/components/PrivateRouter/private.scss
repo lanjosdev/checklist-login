@@ -1,0 +1,6 @@
+@import '../../styles/global.scss';
+
+h1.title-loading {
+    @include spacing-section();
+    color: $text-app;
+}
