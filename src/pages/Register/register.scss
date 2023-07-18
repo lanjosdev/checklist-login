@@ -36,7 +36,7 @@
             height: 3.2rem;
             border-radius: 7px;
             padding: 0 .9rem;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
         }
 
         .show-senha {
@@ -56,7 +56,7 @@
         display: inline-block;
         width: 100%;
         margin-top: 2rem;
-        font-size: 1.4rem;
+        font-size: 1.5rem;
         text-align: center;
 
         &:hover {
@@ -69,6 +69,12 @@
 
         h1 {
             font-size: 3.6rem;
-        }                
+        }  
+
+        form.register {
+            padding: 4rem 2.5rem;
+            text-align: left;
+        }
+        
     }
 }

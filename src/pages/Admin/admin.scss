@@ -32,7 +32,7 @@
                 height: 3.2rem;
                 border-radius: 7px;
                 padding: 0 .9rem;
-                font-size: 1.5rem;
+                font-size: 1.6rem;
             }
     
             .show-senha {
@@ -40,6 +40,7 @@
             }
     
             button {
+                font-size: 1.5rem;
                 background-color: $azul;
                 color: $text-app;
                 font-weight: 600;
@@ -106,16 +107,9 @@
 
 
     @media screen and (max-width: 480px) {
-        text-align: center;
-
         h1 {
             font-size: 3.6rem;
+            text-align: center;
         }          
-        
-        section.form-tarefas {
-            .list-tarefas {
-                text-align: left;
-            }
-        }
     }
 }
