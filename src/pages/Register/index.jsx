@@ -58,6 +58,7 @@ export default function Register() {
             value={email}
             onChange={(e)=> setEmail(e.target.value)}
             required
+            autoComplete='off'
           />
           <input 
             type={showSenha ? 'text' : 'password'}
@@ -65,6 +66,7 @@ export default function Register() {
             value={senha}
             onChange={(e)=> setSenha(e.target.value)}
             required
+            autoComplete="off"
           />
           <input 
             type={showSenha ? 'text' : 'password'}
@@ -72,6 +74,7 @@ export default function Register() {
             value={confirmeSenha}
             onChange={(e)=> setConfirmeSenha(e.target.value)}
             required
+            autoComplete="off"
           />
 
           <div className="show-senha">

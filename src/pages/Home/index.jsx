@@ -60,6 +60,7 @@ export default function Home() {
             value={senha}
             onChange={(e)=> setSenha(e.target.value)}
             required
+            autoComplete="off"
           />
 
           <div className="show-senha">

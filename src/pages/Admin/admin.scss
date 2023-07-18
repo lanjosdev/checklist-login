@@ -27,6 +27,11 @@
 
             padding-bottom: 1.5rem;
             // border-bottom: 1px solid $gray-2;
+
+            label {
+                font-weight: 600;
+            }
+
             input, button {
                 border: none;
                 height: 3.2rem;
@@ -67,10 +72,13 @@
                 .nome-tarefa {
                     display: flex;
                     align-items: center;
-                    gap: 0.7rem;
+                    gap: 1rem;
     
                     input {
                         cursor: pointer;
+                    }
+                    label {
+                        cursor: text;
                     }
                 }
                 .acoes-tarefa {
@@ -90,8 +98,8 @@
 
     .btn-logout {
         position: absolute;
-        bottom: 6%;
-        right: 4%;
+        bottom: 40px;
+        right: 20px;
 
         padding: 1rem 2rem;
         border-radius: 10px;
@@ -110,6 +118,14 @@
         h1 {
             font-size: 3.6rem;
             text-align: center;
-        }          
+        }       
+        
+        section.form-tarefas {
+            padding: 3.5rem 2.5rem;
+        }
+
+        .btn-logout {
+            right: 15px;
+        }
     }
 }
