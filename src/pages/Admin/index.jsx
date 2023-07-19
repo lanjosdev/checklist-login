@@ -89,7 +89,7 @@ export default function Admin() {
         const docRef = doc(db, "tarefas", id);
         await deleteDoc(docRef)
         .then(()=> {
-            console.log('Tarefa DELETADA!');
+            console.log('Tarefa DELETADA no DB!');
         })
         .catch((error)=> {
             console.log('ERRO AO DELETAR TAREFA!');
@@ -103,34 +103,42 @@ export default function Admin() {
         setEditTarefa(item.tarefa);
         
         const newTarefas = [...tarefas];
-        newTarefas.map((tarefa) => (tarefa.id === item.id ? (tarefa.edit = !tarefa.edit) : tarefa));
-
+        newTarefas.map((tarefa) => (tarefa.id === item.id ? (tarefa.edit = !tarefa.edit) : tarefa)); // mudar edit para TRUE
         setTarefas(newTarefas);        
     }
-
     function onEnterDown(event, item) {
         if(event.key === "Enter") {
-            handleUpdateTarefa(item);
+            if(editTarefa.length > 0) {
+                handleUpdateTarefa(item);                
+            } else {
+                onClickDeleteTarefa(item.id);
+            }
         }
     }
 
     async function handleUpdateTarefa(item) {
         const newTarefas = [...tarefas];
-        newTarefas.map((tarefa) => (tarefa.id === item.id ? (tarefa.edit = !tarefa.edit) : tarefa));
-
+        newTarefas.map((tarefa) => (tarefa.id === item.id ? (tarefa.edit = !tarefa.edit) : tarefa)); // mudar edit para TRUE
         setTarefas(newTarefas);
 
-
-        const docRef = doc(db, "tarefas", item.id);
-        await updateDoc(docRef, {
-            tarefa: editTarefa
-        })
-        .then(() => {
-            console.log("TAREFA ATUALIZADA");
-        })
-        .catch(() => {
-            console.log("ERRO AO ATUALIZAR");
-        })
+        if(editTarefa !== item.tarefa) {
+            if(editTarefa.length > 0) {
+                // UPDATE DO DB FIREBASE:
+                const docRef = doc(db, "tarefas", item.id);
+                await updateDoc(docRef, {
+                    tarefa: editTarefa
+                })
+                .then(() => {
+                    console.log("TAREFA ATUALIZADA NO DB");
+                })
+                .catch(() => {
+                    console.log("ERRO AO ATUALIZAR");
+                })
+            } else {
+                onClickDeleteTarefa(item.id);
+            }     
+        }
+        // return;
     }
 
     return (
@@ -167,7 +175,15 @@ export default function Admin() {
                                 />
 
                                 {tItem.edit ? (
+                                    <>
+                                    <div 
+                                        id="backdrop"
+
+                                        onClick={()=> handleUpdateTarefa(tItem)}
+                                    >
+                                    </div>
                                     <input
+                                        id='input-edit'
                                         autoFocus
                                         type='text'
                                         value={editTarefa}
@@ -175,6 +191,7 @@ export default function Admin() {
 
                                         onKeyDown={(e)=> onEnterDown(e, tItem)}
                                     />
+                                    </>
                                 ) : (
                                     <label
                                         onClick={()=> onClickEdit(tItem)}
