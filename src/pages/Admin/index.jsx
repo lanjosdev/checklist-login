@@ -98,13 +98,34 @@ export default function Admin() {
     }
 
     // Update:
+    function isEdit(item) {
+        const newTarefas = [...tarefas];
+        newTarefas.map((tarefa) => (tarefa.id === item.id ? (tarefa.edit = !tarefa.edit) : tarefa)); // mudar edit para TRUE
+        setTarefas(newTarefas);
+    }
+    async function isDone(item) {
+        // const newTarefas = [...tarefas];
+        // newTarefas.map((tarefa) => (tarefa.id === item.id ? (tarefa.done = !tarefa.done) : tarefa)); // mudar edit para TRUE
+        // setTarefas(newTarefas);
+
+        // UPDATE DO DB FIREBASE:
+        const docRef = doc(db, "tarefas", item.id);
+        await updateDoc(docRef, {
+            done: !item.done
+        })
+        .then(() => {
+            console.log("TAREFA FINALIZADA NO DB");
+        })
+        .catch(() => {
+            console.log("ERRO AO ATUALIZAR");
+        })
+    }
+
     function onClickEdit(item) {
         // if(!editTarefa) {
         setEditTarefa(item.tarefa);
         
-        const newTarefas = [...tarefas];
-        newTarefas.map((tarefa) => (tarefa.id === item.id ? (tarefa.edit = !tarefa.edit) : tarefa)); // mudar edit para TRUE
-        setTarefas(newTarefas);        
+        isEdit(item);                
     }
     function onEnterDown(event, item) {
         if(event.key === "Enter") {
@@ -117,9 +138,7 @@ export default function Admin() {
     }
 
     async function handleUpdateTarefa(item) {
-        const newTarefas = [...tarefas];
-        newTarefas.map((tarefa) => (tarefa.id === item.id ? (tarefa.edit = !tarefa.edit) : tarefa)); // mudar edit para TRUE
-        setTarefas(newTarefas);
+        isEdit(item);
 
         if(editTarefa !== item.tarefa) {
             if(editTarefa.length > 0) {
@@ -172,13 +191,13 @@ export default function Admin() {
                                 <input
                                     type="checkbox"
                                     title='Feito'
+                                    onClick={()=> isDone(tItem)}
                                 />
 
                                 {tItem.edit ? (
                                     <>
                                     <div 
                                         id="backdrop"
-
                                         onClick={()=> handleUpdateTarefa(tItem)}
                                     >
                                     </div>
@@ -188,12 +207,12 @@ export default function Admin() {
                                         type='text'
                                         value={editTarefa}
                                         onChange={(e)=> setEditTarefa(e.target.value)}
-
                                         onKeyDown={(e)=> onEnterDown(e, tItem)}
                                     />
                                     </>
                                 ) : (
                                     <label
+                                        className={tItem.done ? "tarefa-done" : ""}
                                         onClick={()=> onClickEdit(tItem)}
                                     >{tItem.tarefa}</label>
                                 )}

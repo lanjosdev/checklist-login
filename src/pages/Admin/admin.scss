@@ -77,9 +77,14 @@
                     input {
                         cursor: pointer;
                     }
+
                     label {
                         cursor: text;
                     }
+                    label.tarefa-done {
+                        text-decoration: line-through;
+                        color: #808488;
+                      }
 
                     #backdrop {
                         // background: rgba(0, 0, 0, .4);

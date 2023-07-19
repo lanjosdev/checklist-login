@@ -69,7 +69,7 @@ export default function Home() {
               id='showSenha'
               onClick={()=> setShowSenha(!showSenha)}
             />
-            <label htmlFor="showSenha"> Mostrar senha</label>
+            <label htmlFor="showSenha">Mostrar senha</label>
           </div>
 
           <button type='submit'>Acessar</button>
